@@ -1,0 +1,180 @@
+
+	\documentclass[UTF8]{ctexart}
+		%-------------------------------------------------------------导言-------------------------
+		\usepackage[T1]{fontenc} %设置text格式下划线
+		\usepackage{lmodern} %设置text格式下划线
+		\usepackage{geometry}
+		\usepackage{multirow}
+		\usepackage{float}%浮动包
+		\usepackage{colortbl}%设置表格行高
+		\definecolor{lightgray}{RGB}{245,245,245}
+		\usepackage{makecell} %设置表格线
+		\usepackage{booktabs} %表格线粗细
+		\usepackage{fancyhdr}%插入页眉页脚页码包
+		\usepackage{graphicx} % 图形宏包
+		\usepackage{colortbl} %表格颜色包
+		\usepackage{setspace}%使用间距宏包
+		\usepackage{CJK,CJKnumb} %设置字体
+		\usepackage{array}%表格固定列宽内容居中
+		%\usepackage{natbib}
+		%\usepackage[superscript]{cite} % 文献上标
+		\usepackage[super,square,comma,sort&compress]{natbib}
+		\usepackage[normalem]{ulem}%添加下划线
+		\usepackage{lastpage}%获得总页数
+		\usepackage{enumerate} %列表
+		\usepackage{enumitem} %设置列表间隔
+		\setlist[enumerate,1]{label=\arabic*、,leftmargin=7mm,labelsep=1.5mm,topsep=0mm,itemsep=-0.8mm}
+		%添加水印
+		\usepackage{tikz}
+		\usepackage{xcolor}
+		\usepackage{eso-pic}
+		%添加水印
+		\usepackage{longtable} %表格分页
+		\usepackage{overpic} %封面添加患者信息
+
+		%------------------------------------------------------结束-------------------------------
+	%水印
+	\newcommand\BackgroundPicture{
+		 \put(0,0){
+			\parbox[b][\paperheight]{\paperwidth}{
+				\vfill
+				      \centering
+					  \begin{tikzpicture}[remember picture,overlay]
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at (current page.center) {\textcolor{gray!80!cyan!30}{PMseq}};
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=5cm,yshift=0cm]current page.west) {\textcolor{gray!80!cyan!30}{PMseq}};
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=-5cm,yshift=0cm]current page.east) {\textcolor{gray!80!cyan!30}{PMseq}};
+
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=0cm,yshift=-7cm]current page.north) {\textcolor{gray!80!cyan!30}{PMseq}};
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=-5cm,yshift=-7cm]current page.north east) {\textcolor{gray!80!cyan!30}{PMseq}};
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=5cm,yshift=-7cm]current page.north west) {\textcolor{gray!80!cyan!30}{PMseq}};
+
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=0cm,yshift=7cm]current page.south) {\textcolor{gray!80!cyan!30}{PMseq}};
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=5cm,yshift=7cm]current page.south west) {\textcolor{gray!80!cyan!30}{PMseq}};
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=-5cm,yshift=7cm]current page.south east) {\textcolor{gray!80!cyan!30}{PMseq}};
+
+			\end{tikzpicture}
+			\vfill
+			}
+		}
+	}
+%水印
+		\definecolor{mygray}{gray}{.9}
+		%\newCJKfontfamilymsyh{微软雅黑}
+		%\setCJKfamilyfont{yh}{Microsoft YaHei}
+		\definecolor{myblue}{RGB}{0,74,143}
+
+
+		\newcommand{\song}{\CJKfamily{song}}    % 宋体
+		\newcommand{\fs}{\CJKfamily{fs}}             % 仿宋体
+		\newcommand{\kai}{\CJKfamily{kai}}          % 楷体
+		\newcommand{\hei}{\CJKfamily{hei}}         % 黑体
+		\newcommand{\li}{\CJKfamily{li}}               % 隶书
+
+		%-----------------------------------------------结束-------------------------
+		\geometry{a4paper,centering,scale=0.8}
+		\pagestyle{fancy} %插入页眉页脚
+		%\graphicspath{{E:/工作/Plus产品小程序/Plus产品小程序版本更新/V3.3.2/TJ_v3.3.2/}}
+		\graphicspath{{C:/CTEX/Pictures/}}
+
+		%-------------------------------------------------页眉插入图片-------------
+		\newsavebox{\headpic}
+		\sbox{\headpic}{\includegraphics[height=2cm]{.jpg}} %设置页眉logo页眉
+		\fancyhead[L]{\usebox{\headpic}}
+		\fancyhead[C]{\zihao{-5}姓名：郭全德 \hspace{1cm}  采样日期：2020-05-07  \hspace{1cm}  样本编号：19S0477309}
+		%--------------------------------------------------结束---------------------
+
+		%----------------------------------------------设置页眉页脚格式------------
+		
+		\rhead{\zihao{-5} \uline{\hspace{14cm}DX-PMP-B V1.1} \vspace{0.1ex}   }
+		 \lfoot{\zihao{-5} 客服电话：400-605-6655  \hspace{0.8cm} 网址:www.bgidx.cn}
+		\cfoot{}%有该命令，页脚中间不出现页码
+		%\rfoot{\thepage}
+		\rfoot{\thepage \ / \pageref{LastPage}}
+		\renewcommand{\headrulewidth}{0.2pt}%改为0pt即可去掉页脚上面的横线   
+		\renewcommand{\footrulewidth}{0.2pt}
+		%-------------------------------------------------结束--------------------
+		\setlength{\extrarowheight}{4mm} %表格行高
+		%\setlength{\parindent}{0pt}%段首不缩进
+		%------------------------------------------开始正文--------------------------
+		\begin{document}
+		\bibliographystyle{unsrt} % 按文献在正文中引用的顺序排序
+		\AddToShipoutPicture{\BackgroundPicture} %水印		
+		%-----------------------------------------首页插入图片----------------------
+		\newgeometry{left=-0.8cm,bottom=0cm,right=0.8cm,top=0cm}%更改单个页面页边距 
+		\setcounter{page}{0} %页码1从第二页开始
+		\thispagestyle{empty} %首页不显示页眉页脚
+
+		%封面添加患者信息
+		\begin{overpic}[width=\textwidth,height=\textheight,keepaspectratio]{.png}
+		\put(15,21){\begin{tabular}{cp{270 pt}<{\centering}}%19
+		\textcolor{myblue}{\zihao{4}\bfseries \makebox[3.5em][s]{姓名}} & \textcolor{myblue}{\zihao{4}\bfseries 郭全德}\\
+		\arrayrulecolor{myblue}\cline{2-2}
+		\textcolor{myblue}{\zihao{4}\bfseries 样本编号} & \textcolor{myblue}{\zihao{4}\bfseries 19S0477309}\\
+		\cline{2-2}
+		\textcolor{myblue}{\zihao{4}\bfseries 样本类型} & \textcolor{myblue}{\zihao{4}\bfseries 肺泡灌洗液}\\
+		\cline{2-2}
+		\textcolor{myblue}{\zihao{4}\bfseries 检测项目} & \textcolor{myblue}{\zihao{4}\bfseries }\\
+		\cline{2-2}
+		\textcolor{myblue}{\zihao{4}\bfseries 送检单位} & \textcolor{myblue}{\zihao{4}\bfseries 泰安市中心医院}\\
+		
+		\cline{2-2}
+		\end{tabular}}
+		\end{overpic}		
+		
+		
+		\restoregeometry %恢复到原来的页边距
+		%------------------------------------------------------结束-----------------------------
+		%\clearpage
+		\newpage
+		\topskip 1.5cm
+		%\vspace{6mm}%页眉横线与正文间的垂直间距
+
+		\noindent %顶格，不缩进
+		{\hei\zihao{4}\bfseries 基本信息} %如何设置使得距离页眉的距离跟检测结果一样？
+		%-------------------------------------------------------开始表格-----------------------------------------------------
+		\begin{table}[H]
+		%\small% 表格内容大小
+		\zihao{-4}{\bfseries
+		%\centering
+		%\begin{tabular}{|lll|}
+		\renewcommand\arraystretch{0.85} %设置表格行高
+		\begin{tabular}{|p{0.33\textwidth}|p{0.33\textwidth}|p{0.33\textwidth}|} %设置表格宽度
+		\hline
+		\rowcolor{mygray}\multicolumn{3}{|c|}{受检者信息} \\%竖线的作用？
+		\hline
+		姓名：郭全德 & 性别：男 & 年龄： 39 \\
+		\hline
+		住院号：- & 床号：- & 原样本编号： -  \\
+		\hline
+		\rowcolor{mygray}\multicolumn{3}{|c|}{临床信息} \\
+		\hline
+		\multicolumn{3}{|p{\textwidth}|}{ 临床表现：-} \\
+		\hline
+		\multicolumn{3}{|p{\textwidth}|}{临床检测} \\
+		\hline
+		\end{tabular}
+		\begin{tabular}{|p{0.243\textwidth}|p{0.24\textwidth}|p{0.24\textwidth}|p{0.24\textwidth}|} %设置表格宽度？？？？？？？
+		血WBC：- & 脑脊液WBC：- & 胸腹水WBC：- & CRP：- \\
+		\hline
+		PCT：- & 培养结果：- & 鉴定结果：- & 镜检结果：- \\
+		\hline
+		
+		\multicolumn{4}{|p{\textwidth}|}{临床诊断：CT显示肺部感染} \\
+		\hline
+		\multicolumn{4}{|p{\textwidth}|}{重点关注病原：真菌,细菌,分枝杆菌,支原体/衣原体,寄生虫,病毒} \\
+		\hline
+		\multicolumn{4}{|p{\textwidth}|}{抗感染用药：-} \\
+		\hline
+		\rowcolor{mygray}\multicolumn{4}{|c|}{样本信息} \\
+		\end{tabular}
+		\begin{tabular}{|p{0.33\textwidth}|p{0.33\textwidth}|p{0.33\textwidth}|} %设置表格宽度
+		\hline
+		送检单位：泰安市中心医院 & 送检科室：呼吸内科 & 送检医师：杜医生  \\
+		\hline
+		采样日期：2020-05-07 & 收样日期：2020-05-08 & 报告日期：2020-05-09 11:20 \\
+		\hline
+		样本编号：19S0477309 & 样本类型：肺泡灌洗液 &  样本体积：-  \\
+		%\Xhline{1pt}
+	    \hline
+		\end{tabular}
+		

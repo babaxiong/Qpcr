@@ -1,0 +1,287 @@
+
+	\documentclass[UTF8]{ctexart}
+		%-------------------------------------------------------------导言-------------------------
+		\usepackage[T1]{fontenc} %设置text格式下划线
+		\usepackage{lmodern} %设置text格式下划线
+		\usepackage{geometry}
+		\usepackage{multirow}
+		\usepackage{float}%浮动包
+		\usepackage{colortbl}%设置表格行高
+		\definecolor{lightgray}{RGB}{245,245,245}
+		\usepackage{makecell} %设置表格线
+		\usepackage{booktabs} %表格线粗细
+		\usepackage{fancyhdr}%插入页眉页脚页码包
+		\usepackage{graphicx} % 图形宏包
+		\usepackage{colortbl} %表格颜色包
+		\usepackage{setspace}%使用间距宏包
+		\usepackage{CJK,CJKnumb} %设置字体
+		\usepackage{array}%表格固定列宽内容居中
+		%\usepackage{natbib}
+		%\usepackage[superscript]{cite} % 文献上标
+		\usepackage[super,square,comma,sort&compress]{natbib}
+		\usepackage[normalem]{ulem}%添加下划线
+		\usepackage{lastpage}%获得总页数
+		\usepackage{enumerate} %列表
+		\usepackage{enumitem} %设置列表间隔
+		\setlist[enumerate,1]{label=\arabic*、,leftmargin=7mm,labelsep=1.5mm,topsep=0mm,itemsep=-0.8mm}
+		%添加水印
+		\usepackage{tikz}
+		\usepackage{xcolor}
+		\usepackage{eso-pic}
+		%添加水印
+		\usepackage{longtable} %表格分页
+		\usepackage{overpic} %封面添加患者信息
+
+		%------------------------------------------------------结束-------------------------------
+	%水印
+	\newcommand\BackgroundPicture{
+		 \put(0,0){
+			\parbox[b][\paperheight]{\paperwidth}{
+				\vfill
+				      \centering
+					  \begin{tikzpicture}[remember picture,overlay]
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at (current page.center) {\textcolor{gray!80!cyan!30}{PMseq}};
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=5cm,yshift=0cm]current page.west) {\textcolor{gray!80!cyan!30}{PMseq}};
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=-5cm,yshift=0cm]current page.east) {\textcolor{gray!80!cyan!30}{PMseq}};
+
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=0cm,yshift=-7cm]current page.north) {\textcolor{gray!80!cyan!30}{PMseq}};
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=-5cm,yshift=-7cm]current page.north east) {\textcolor{gray!80!cyan!30}{PMseq}};
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=5cm,yshift=-7cm]current page.north west) {\textcolor{gray!80!cyan!30}{PMseq}};
+
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=0cm,yshift=7cm]current page.south) {\textcolor{gray!80!cyan!30}{PMseq}};
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=5cm,yshift=7cm]current page.south west) {\textcolor{gray!80!cyan!30}{PMseq}};
+					  \node [rotate=60,scale=4,text opacity=0.5,font=\fontsize{10}{10}\selectfont] at ([xshift=-5cm,yshift=7cm]current page.south east) {\textcolor{gray!80!cyan!30}{PMseq}};
+
+			\end{tikzpicture}
+			\vfill
+			}
+		}
+	}
+%水印
+		\definecolor{mygray}{gray}{.9}
+		%\newCJKfontfamilymsyh{微软雅黑}
+		%\setCJKfamilyfont{yh}{Microsoft YaHei}
+		\definecolor{myblue}{RGB}{0,74,143}
+
+
+		\newcommand{\song}{\CJKfamily{song}}    % 宋体
+		\newcommand{\fs}{\CJKfamily{fs}}             % 仿宋体
+		\newcommand{\kai}{\CJKfamily{kai}}          % 楷体
+		\newcommand{\hei}{\CJKfamily{hei}}         % 黑体
+		\newcommand{\li}{\CJKfamily{li}}               % 隶书
+
+		%-----------------------------------------------结束-------------------------
+		\geometry{a4paper,centering,scale=0.8}
+		\pagestyle{fancy} %插入页眉页脚
+		%\graphicspath{{E:/工作/Plus产品小程序/Plus产品小程序版本更新/V3.3.2/TJ_v3.3.2/}}
+		\graphicspath{{C:/CTEX/Pictures/}}
+
+		%-------------------------------------------------页眉插入图片-------------
+		\newsavebox{\headpic}
+		\sbox{\headpic}{\includegraphics[height=2cm]{Y27-qPCR-7X-200309.jpg}} %设置页眉logo页眉
+		\fancyhead[L]{\usebox{\headpic}}
+		\fancyhead[C]{\zihao{-5}姓名：郭全德 \hspace{1cm}  采样日期：2020-05-07  \hspace{1cm}  样本编号：19S0477309}
+		%--------------------------------------------------结束---------------------
+
+		%----------------------------------------------设置页眉页脚格式------------
+		
+		\rhead{\zihao{-5} \uline{\hspace{14cm}DX-PMP-B92 V1.1} \vspace{0.1ex}   }
+		 \lfoot{\zihao{-5} 客服电话：400-605-6655  \hspace{0.8cm} 网址:www.bgidx.cn}
+		\cfoot{}%有该命令，页脚中间不出现页码
+		%\rfoot{\thepage}
+		\rfoot{\thepage \ / \pageref{LastPage}}
+		\renewcommand{\headrulewidth}{0.2pt}%改为0pt即可去掉页脚上面的横线   
+		\renewcommand{\footrulewidth}{0.2pt}
+		%-------------------------------------------------结束--------------------
+		\setlength{\extrarowheight}{4mm} %表格行高
+		%\setlength{\parindent}{0pt}%段首不缩进
+		%------------------------------------------开始正文--------------------------
+		\begin{document}
+		\bibliographystyle{unsrt} % 按文献在正文中引用的顺序排序
+		\AddToShipoutPicture{\BackgroundPicture} %水印		
+		%-----------------------------------------首页插入图片----------------------
+		\newgeometry{left=-0.8cm,bottom=0cm,right=0.8cm,top=0cm}%更改单个页面页边距 
+		\setcounter{page}{0} %页码1从第二页开始
+		\thispagestyle{empty} %首页不显示页眉页脚
+
+		%封面添加患者信息
+		\begin{overpic}[width=\textwidth,height=\textheight,keepaspectratio]{F27-qPCR-7X-200309.png}
+		\put(15,21){\begin{tabular}{cp{270 pt}<{\centering}}%19
+		\textcolor{myblue}{\zihao{4}\bfseries \makebox[3.5em][s]{姓名}} & \textcolor{myblue}{\zihao{4}\bfseries 郭全德}\\
+		\arrayrulecolor{myblue}\cline{2-2}
+		\textcolor{myblue}{\zihao{4}\bfseries 样本编号} & \textcolor{myblue}{\zihao{4}\bfseries 19S0477309}\\
+		\cline{2-2}
+		\textcolor{myblue}{\zihao{4}\bfseries 样本类型} & \textcolor{myblue}{\zihao{4}\bfseries 肺泡灌洗液}\\
+		\cline{2-2}
+		\textcolor{myblue}{\zihao{4}\bfseries 检测项目} & \textcolor{myblue}{\zihao{4}\bfseries 七项呼吸道病原体核酸检测}\\
+		\cline{2-2}
+		\textcolor{myblue}{\zihao{4}\bfseries 送检单位} & \textcolor{myblue}{\zihao{4}\bfseries 泰安市中心医院}\\
+		
+		\cline{2-2}
+		\end{tabular}}
+		\end{overpic}		
+		
+		
+		\restoregeometry %恢复到原来的页边距
+		%------------------------------------------------------结束-----------------------------
+		%\clearpage
+		\newpage
+		\topskip 1.5cm
+		%\vspace{6mm}%页眉横线与正文间的垂直间距
+
+		\noindent %顶格，不缩进
+		{\hei\zihao{4}\bfseries 基本信息} %如何设置使得距离页眉的距离跟检测结果一样？
+		%-------------------------------------------------------开始表格-----------------------------------------------------
+		\begin{table}[H]
+		%\small% 表格内容大小
+		\zihao{-4}{\bfseries
+		%\centering
+		%\begin{tabular}{|lll|}
+		\renewcommand\arraystretch{0.85} %设置表格行高
+		\begin{tabular}{|p{0.33\textwidth}|p{0.33\textwidth}|p{0.33\textwidth}|} %设置表格宽度
+		\hline
+		\rowcolor{mygray}\multicolumn{3}{|c|}{受检者信息} \\%竖线的作用？
+		\hline
+		姓名：郭全德 & 性别：男 & 年龄： 39 \\
+		\hline
+		住院号：- & 床号：- & 原样本编号： -  \\
+		\hline
+		\rowcolor{mygray}\multicolumn{3}{|c|}{临床信息} \\
+		\hline
+		\multicolumn{3}{|p{\textwidth}|}{ 临床表现：-} \\
+		\hline
+		\multicolumn{3}{|p{\textwidth}|}{临床检测} \\
+		\hline
+		\end{tabular}
+		\begin{tabular}{|p{0.243\textwidth}|p{0.24\textwidth}|p{0.24\textwidth}|p{0.24\textwidth}|} %设置表格宽度？？？？？？？
+		血WBC：- & 脑脊液WBC：- & 胸腹水WBC：- & CRP：- \\
+		\hline
+		PCT：- & 培养结果：- & 鉴定结果：- & 镜检结果：- \\
+		\hline
+		
+		\multicolumn{4}{|p{\textwidth}|}{临床诊断：CT显示肺部感染} \\
+		\hline
+		\multicolumn{4}{|p{\textwidth}|}{重点关注病原：真菌,细菌,分枝杆菌,支原体/衣原体,寄生虫,病毒} \\
+		\hline
+		\multicolumn{4}{|p{\textwidth}|}{抗感染用药：-} \\
+		\hline
+		\rowcolor{mygray}\multicolumn{4}{|c|}{样本信息} \\
+		\end{tabular}
+		\begin{tabular}{|p{0.33\textwidth}|p{0.33\textwidth}|p{0.33\textwidth}|} %设置表格宽度
+		\hline
+		送检单位：泰安市中心医院 & 送检科室：呼吸内科 & 送检医师：杜医生  \\
+		\hline
+		采样日期：2020-05-07 & 收样日期：2020-05-08 & 报告日期：2020-05-09 11:20 \\
+		\hline
+		样本编号：19S0477309 & 样本类型：肺泡灌洗液 &  样本体积：-  \\
+		%\Xhline{1pt}
+	    \hline
+		\end{tabular}
+		\begin{tabular}{|p{0.33\textwidth}<{\centering}|p{0.33\textwidth}<{\centering}|p{0.33\textwidth}<{\centering}|} %设置表格宽度
+		\rowcolor{mygray}\multicolumn{3}{|c|}{检测结果} \\
+		\hline
+		中文名 & 拉丁文名 & 检测结果\\	
+		\hline	
+		甲型流感病毒 & Influenza A virus,IAV &  \\
+		\hline
+		乙型流感病毒 & Influenza B virus,IBV &  \\
+		\hline
+		呼吸道合胞病毒 & Respiratory syncytial virus, RSV &  \\
+		\hline
+		人腺病毒 & Human adenovirus, HAdV & \\
+		\hline
+		人鼻病毒 & Human rhinovirus, HRV &  \\
+		\hline
+		肺炎支原体 & Mycoplasma Pneumoniae MP & \\
+		\hline
+		2019新型冠状病毒  & 2019-nCoV MP &  \\
+		\hline
+		\end{tabular}}
+		\end{table}
+		\newpage
+		\topskip 0.1cm	
+	\begin{longtable}{|p{1.04\textwidth}|} %设置表格宽度？？？？？？？
+		\hline
+		\begin{spacing}{1}
+		{\noindent\hei\bfseries\zihao{4} 致病性说明：}
+		\end{spacing}
+		
+		\zihao{-4}\setlength{\baselineskip}{16pt}	\qquad甲型/乙型流感病毒（Influenza A/B virus,IAV/IBV）属于正粘病毒科（Orthomyxoviridae），为单链RNA病毒。这两种病毒均为常见的流感病毒，变异率高，流行率高，感染后的临床表现主要有发热、头痛、畏寒、乏力、恶心、咽痛、咳嗽和全身酸痛，严重病例可因肺炎、呼吸衰竭而致死亡$^{[1]}$。据世界卫生组织报道，流感病毒每年导致约300万-500万例流感病例，每年造成25万至50万人死亡，20万人住院。自1977年以来，甲型H1N1流感病毒（H1N1），甲型H3N2流感病毒（H3N2）和乙型流感病毒在全球共同传播$^{[2-3]}$。\\
+
+		\zihao{-4}\setlength{\baselineskip}{16pt}	\qquad呼吸道合胞病毒（Respiratory syncytial virus，RSV）是一种RNA病毒，属于副粘病毒，该病毒经空气飞沫和密切接触传播，引起婴幼儿下呼吸道感染的主要病原；婴幼儿感染RSV后可发生严重的毛细支气管炎(简称毛支)和肺炎，与儿童哮喘有一定的关联，婴幼儿症状较重，可有高热、鼻炎、咽炎及喉炎，以后表现为细支气管炎及肺炎。少数病儿可并发中耳炎、胸膜炎及心肌炎等。成人和年长儿童感染后，主要表现为上呼吸道感染$^{[4]}$。\\
+
+		\zihao{-4}\setlength{\baselineskip}{16pt}	\qquad人腺病毒（Human adenovirus, HAdV）为无包膜的双链DNA病毒，目前已发现至少90个基因型，分为A-G共7个亚属。呼吸道感染相关的HAdV主要有B亚属、C亚属和E亚属（HAdV-4型）。腺病毒肺炎约占社区获得性肺炎的4%-10%，重症肺炎以3型及7型多，是儿童社区获得性肺炎中较为严重的类型之一$^{[5]}$。\\
+
+		\zihao{-4}\setlength{\baselineskip}{16pt}	\qquad人鼻病毒（Human rhinovirus，HRV）小RNA病毒科、肠病毒属的一种，是人患普通感冒的主要病原，对普通感冒尚无特异预防和治疗方法；有时会引起诸如哮喘、充血性心衰、支气管扩张，包囊纤维化等严重并发症，并且HRV多与其它呼吸道病毒合并感染，例如呼吸道合胞病毒、腺病毒等$^{[6]}$。\\
+
+		\zihao{-4}\setlength{\baselineskip}{16pt}	\qquad肺炎支原体（M.Pneumonia，M.p）是一种大小介于细菌和病毒之间的致病微生物，支原体肺炎的病理改变以间质性肺炎为主，有时并发支气管肺炎，称为原发性非典型性肺炎。主要经飞沫传染，潜伏期2～3周，发病率以青少年最高。临床症状较轻，甚至根本无症状，若有也只是头痛、咽痛、发热、咳嗽等一般的呼吸道症状，但也有个别死亡报道。一年四季均可发生$^{[7]}$。\\
+		
+		\zihao{-4}\setlength{\baselineskip}{16pt}	\qquad2019新型冠状病毒（2019-nCoV）是2019年新发现的一种新型冠状病毒，属于β冠状病毒属，是2019新型冠状病毒疾病（COVID-19）的病原体，已在世界范围内广泛传播，并引起多个国家的COVID-19爆发。该病毒的传染性较强，潜伏期1-14天，无症状感染者也可能成为传染源，呼吸道飞沫传播及密切接触传播是主要的传播途径。该病毒常在COVID-19患者的呼吸道样本中发现，有文献报道在患者的粪便、尿液中也有检测到$^{[8-11]}$。\\
+		\hline
+
+		\begin{spacing}{1}
+		{\noindent\hei\bfseries\zihao{4} 结论：}
+		\end{spacing}
+		\zihao{-4}
+		\setlength{\baselineskip}{18pt}	\qquad本次检测中，呼吸道病原体检测结果为阳性，检出病原为：【任意病原名称，当出现多个需要用、隔开】。 \\  
+		\setlength{\baselineskip}{18pt}	\qquad本次检测中，呼吸道病原体检测结果为阴性，未检出本产品检测范围内病原。\\
+		\hline
+		\end{longtable}
+		
+		\newpage
+		\topskip 0.1cm
+		\begin{longtable}{p{1.04\textwidth}}
+		\begin{spacing}{1}
+		{\noindent\hei\bfseries\zihao{4} 说明：}
+		\end{spacing}
+		\begin{enumerate}
+		\item 本检测采用PCR扩增结合Sanger测序技术对肠道病毒进行分型检测。
+		
+		\item 由于肠道病毒亚型较多，序列存在突变或病毒载量较低、样本不合理采集等情况可能导致PCR 扩增结果为阴性。
+		
+		\item 若样本病毒拷贝数低于检出限，会显示检出肠道病毒样本，但Sanger测序失败，无法分型。
+		
+		\item 以上结论均为实验室检测数据，仅供临床参考，不能作为最终诊断结果。具体结果需结合临床体征、病史、其他实验室检查及治疗反应等情况综合考虑。
+		
+		\item 此报告结果仅对本次送检样本负责，报告相关解释须咨询临床医生。 
+		
+		\end{enumerate}
+		\vspace{10ex} % 增加空行
+
+		{\zihao{6}\color{white} \hspace{12cm}\$result\_seal\_user\_flag\_7\$}\\
+		{\song\zihao{-4}\bfseries 检测者：}{\zihao{6}\color{white}\$result\_seal\_user\_flag\_15\$}
+		{\song\zihao{-4}\bfseries 审核者：}{\zihao{6}\color{white}\$result\_seal\_user\_flag\_29\$}
+		{\song\zihao{-4}\bfseries 报告日期：2020-05-09 11:20}
+		
+		\vspace{4cm}
+		\begin{spacing}{1.5}
+		{\noindent\song\bfseries\zihao{4} 附录}
+		\end{spacing}
+		\begin{spacing}{1.5}
+		{\noindent\song\bfseries\zihao{-4} 参考文献}
+		\end{spacing}
+
+{\noindent\zihao{5}[1] Yamashita M, Krystal M, Fitch WM, Palese P. Influenza B virus evolution: co circulating lineages and comparison of evolutionary pattern with those of influenza A and C viruses. Virology[J]. 1988,163(1).112~122.}
+
+{\noindent\zihao{5}[2] 舒跃龙等. 2004-2005年中国A（H1N1）亚型流感病毒抗原性及基因特性研究[J].临床医学, 2006,20(2):27~29.}
+
+{\noindent\zihao{5}[3] 陈继明, 郭元吉. 乙型流行性感冒病毒两大谱系的起源及其演变特征[J]. 病毒学报, 2001,17(4):322~327.}
+
+{\noindent\zihao{5}[4] 林立, 李昌崇. 呼吸道合胞病毒感染发病机制[J]. 中华儿科杂志 2006,44(9):673~675.}
+
+{\noindent\zihao{5}[5] 高文娟, 金玉, 段招军. 人腺病毒的研究进展[J]. 病毒学报, 2014,30(2):193~200.}
+
+{\noindent\zihao{5}[6] 王焕焕, 毛乃颖, 王善振等. 人鼻病毒的研究进展[J]. 病毒学报, 2011,27(3):294~297.}
+
+{\noindent\zihao{5}[7] 陆权, 陆敏. 肺炎支原体感染的流行病学[J]. 实用儿科临床杂志, 2007,22(4):241~243.}
+
+{\noindent\zihao{5}[8] Lu R, Zhao X, Li J et al.. Genomic characterisation and epidemiology of 2019 novel coronavirus: implications for virus origins and receptor binding. Lancet. 2020 Feb 22;395(10224):565-574.}
+
+{\noindent\zihao{5}[9] Zhu N, Zhang D, Wang W, et al.. A Novel Coronavirus from Patients with Pneumonia in China, 2019. N Engl J Med. 2020 Feb 20;382(8):727-733.}
+
+{\noindent\zihao{5}[10] Xie C, Jiang L, Huang G, et al.. Comparison of different samples for 2019 novel coronavirus detection by nucleic acid amplification tests. Int J Infect Dis. 2020 Feb 27;93:264-267.}
+
+{\noindent\zihao{5}[11] Ling Y, Xu SB, Lin YX, et al.. Persistence and clearance of viral RNA in 2019 novel coronavirus disease rehabilitation patients. Chin Med J (Engl). 2020 Feb 28. doi: 10.1097/CM9.0000000000000774. [Epub ahead of print]}
+
+\end{longtable}
+\end{document}
